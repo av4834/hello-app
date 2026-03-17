@@ -1,29 +1,24 @@
-/**
- * HelloApp - UC4
- * Displays greeting for multiple names or defaults to "World"
- */
-
 public class HelloApp {
     public static void main(String[] args) {
 
-        String name = "World";
+        String finalNames = "World";
 
-        // If arguments are provided
         if (args.length > 0) {
             StringBuilder nameBuilder = new StringBuilder();
+            boolean first = true;
 
-            for (int i = 0; i < args.length; i++) {
-                nameBuilder.append(args[i]);
-
-                // Add comma only if not last element
-                if (i < args.length - 1) {
+            for (String name : args) {
+                if (!first) {
                     nameBuilder.append(", ");
                 }
+                nameBuilder.append(name);
+                first = false;
             }
 
-            name = nameBuilder.toString();
+            finalNames = nameBuilder.toString();
         }
 
-        System.out.println("Hello, " + name + "!");
+        System.out.println("Hello, " + finalNames + "!");
     }
 }
+
