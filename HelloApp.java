@@ -1,22 +1,29 @@
 /**
- * HelloApp.java
- * UC1: Display "Hello World"
- * UC2: Display "Hello" with user name
- * UC3: Display "Hello" with user name or default "World"
+ * HelloApp - UC4
+ * Displays greeting for multiple names or defaults to "World"
  */
 
 public class HelloApp {
     public static void main(String[] args) {
 
-        // Default value
         String name = "World";
 
-        // Check if user provided a name
+        // If arguments are provided
         if (args.length > 0) {
-            name = args[0];
+            StringBuilder nameBuilder = new StringBuilder();
+
+            for (int i = 0; i < args.length; i++) {
+                nameBuilder.append(args[i]);
+
+                // Add comma only if not last element
+                if (i < args.length - 1) {
+                    nameBuilder.append(", ");
+                }
+            }
+
+            name = nameBuilder.toString();
         }
 
-        // Print greeting
         System.out.println("Hello, " + name + "!");
     }
 }
